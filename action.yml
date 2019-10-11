@@ -1,0 +1,19 @@
+# action.yml
+name: 'Nightly Build'
+author: 'Thomas Vérin <thomas.verin@sonarsource.com>'
+description: 'Starts a cirrus build'
+inputs:
+  branch:
+    description: 'The branch on which the build will start'
+    required: true
+    default: 'master'
+outputs:
+  dogfood-branch:
+    description: 'The branch on which the build was started'  
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.branch }}
+branding:
+  icon: 'moon'
